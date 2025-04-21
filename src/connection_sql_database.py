@@ -46,5 +46,5 @@ print("\nFirst 5 customers:")
 print(df_customers.head())
 cursor.close()
 
-
-df_customers.to_csv("customers.csv", index=False)
+# save df to csv for easier
+#df_customers.to_csv("customers.csv", index=False)
