@@ -12,7 +12,7 @@ def init():
 
 def run(raw_data):
     try:
-        data = json.loads(raw_data)['data']
+        data = json.loads(raw_data)['data'][0]
         df = pd.DataFrame(data)
 
         df = df.drop(columns=["NameStyle", "CustomerID", "PasswordHash", "PasswordSalt", "rowguid"])

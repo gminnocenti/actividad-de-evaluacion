@@ -16,6 +16,5 @@ r2 = r2_score(y_test, y_pred)
 print(f"R^2: {r2}")
 print(f"MSE: {mse}")
 
-file = open('model.pkl', 'wb')
-pickle.dump(model, file)
-file.close()
+with open('model.pkl', 'wb') as f:
+    pickle.dump(model, f)
