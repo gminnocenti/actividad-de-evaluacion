@@ -3,7 +3,7 @@ import joblib
 import json
 import pandas as pd
 from azureml.core.model import Model
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import LabelEncoder
 
 def init():
     global model
@@ -14,14 +14,12 @@ def run(raw_data):
     try:
         data = json.loads(raw_data)['data'][0]
         df = pd.DataFrame(data)
-
-        df = df.drop(columns=["NameStyle", "CustomerID", "PasswordHash", "PasswordSalt", "rowguid"])
-
-        encoder = OneHotEncoder(sparse_output=False, handle_unknown='ignore')
-        encoded_array = encoder.fit_transform(df)
-        encoded_df = pd.DataFrame(encoded_array, columns=encoder.get_feature_names_out(df.columns))
-
-        predictions = model.predict(encoded_df)
+        df['y'] = pd.to_datetime(df['ModifiedDate']).map(pd.Timestamp.toordinal)
+        df = df.drop(['ModifiedDate', 'rowguid', 'PasswordHash', 'PasswordSalt'], axis=1)
+        for col in df.select_dtypes(include='object').columns:
+            df[col] = LabelEncoder().fit_transform(df[col])
+        df = df.drop('y', axis=1)
+        predictions = model.predict(df)
         return json.dumps({"result": predictions.tolist()})
     except Exception as e:
         return json.dumps({"error": str(e)})
