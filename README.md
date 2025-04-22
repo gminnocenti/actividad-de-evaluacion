@@ -2,29 +2,29 @@
 
 Este repositorio contiene el desarrollo de una actividad práctica enfocada en la creación, entrenamiento y despliegue de un modelo de regresión utilizando **scikit-learn** y **Azure Machine Learning**.
 
-## 🎯 Objetivo
+##  Objetivo
 
 Construir un flujo completo de machine learning, desde el preprocesamiento de datos hasta el despliegue del modelo en la nube.
 
-## 🧑‍💻 Estructura del Equipo
+##  Estructura del Equipo
 
 El proyecto fue dividido en tres departamentos principales:
 
-### 📊 Departamento de Datos
+###  Departamento de Datos
 
 - Archivos: `preprocessing.py`, `connection_sql_database.py`
 - Funciones:
   - Conexión con base de datos SQL.
   - Limpieza, transformación y selección de características para el modelo.
 
-### 🧠 Departamento de Modelos
+###  Departamento de Modelos
 
 - Archivo: `model.py`
 - Funciones:
   - Entrenamiento de un modelo de regresión con **scikit-learn**.
   - Exportación del modelo entrenado como `model.pkl` usando **pickle**.
 
-### ☁️ Departamento de Cómputo en la Nube
+###  Departamento de Cómputo en la Nube
 
 - Archivos: `deployment.py`, `api.py`, `score.py`
 - Funciones:
@@ -39,6 +39,7 @@ El proyecto fue dividido en tres departamentos principales:
 - Azure Machine Learning SDK
 - Pickle
 - JSON
+- XGBOOST
 - `.env` para variables de entorno
 
 ## 📁 Estructura del Proyecto
@@ -103,7 +104,14 @@ python src/model.py
 python src/azure_model_deployment/deployment.py
 ```
 Esto creará el workspace, registrará el modelo y generará el endpoint en ```uri.json``` .
-6. **Probar el endpoint.**
+6. **Colocar el uri en un json en el directorio `src/azure_model_deployment/`**
+Crear un archivo llamado uri.json en el directorio `src/azure_model_deployment/` que tenga el siguiente formato:
+```
+{
+    "URI":"<pegar el uri>"
+}
+```
+7. **Probar el endpoint.**
 ```
 python src/azure_model_deployment/api.py
 ```
