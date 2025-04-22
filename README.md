@@ -1,4 +1,4 @@
-# Cloud Computing – Actividad Semana 2
+# Cloud Computing – Actividad Evaluación
 
 Este repositorio contiene el desarrollo de una actividad práctica enfocada en la creación, entrenamiento y despliegue de un modelo de regresión utilizando **scikit-learn** y **Azure Machine Learning**.
 
