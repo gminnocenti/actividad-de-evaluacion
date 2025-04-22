@@ -11,24 +11,25 @@ key = os.getenv("KEY")
 
 
 from azureml.core import Workspace
+"""
 ws = Workspace.create(name="actividad-de-evaluacion",
                       subscription_id = key, # remplazar por tu subsucripcion id
                       resource_group = "resource-group-actividad-evaluacion",
                       location="centralindia")
 
 """
-ws = Workspace.get(name="ctividad-de-evaluacion",
+ws = Workspace.get(name="actividad-de-evaluacion",
                       subscription_id = key, # remplazar por tu subsucripcion id
                       resource_group = "resource-group-actividad-evaluacion")
-"""
+
 from azureml.core.environment import Environment
 from azureml.core.model import InferenceConfig
 
 env = Environment("model-env")
-env.python.conda_dependencies.add_pip_package("scikit-learn")
-env.python.conda_dependencies.add_pip_package("numpy")
+env.python.conda_dependencies.add_pip_package("scikit-learn")   
 env.python.conda_dependencies.add_pip_package("joblib")
-env.python.conda_dependencies.add_pip_package("pandas")
+env.python.conda_dependencies.add_pip_package("pandas mm")
+env.python.conda_dependencies.add_pip_package("azureml-defaults")     
 
 inference_config = InferenceConfig(entry_script="score.py", environment=env)
 
