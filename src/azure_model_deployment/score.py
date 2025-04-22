@@ -11,7 +11,7 @@ def init():
     global model
 
         
-    model_path = Model.get_model_path('model-actividad-evaluacion')
+    model_path = Model.get_model_path('model')
     model = joblib.load(model_path)
 
 

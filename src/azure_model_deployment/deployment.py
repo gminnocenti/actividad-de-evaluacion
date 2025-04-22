@@ -38,7 +38,7 @@ deployment_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
 
 model = Model.register(workspace=ws,
                        model_path="model.pkl",  
-                       model_name="model-actividad-evaluacion")
+                       model_name="model")
 service = Model.deploy(workspace=ws,
                        name="actividad-evaluacion-service",
                        models=[model],
