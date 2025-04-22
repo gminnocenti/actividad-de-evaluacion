@@ -18,6 +18,7 @@ def run(raw_data):
         df = df.drop(['ModifiedDate', 'rowguid', 'PasswordHash', 'PasswordSalt'], axis=1)
         for col in df.select_dtypes(include='object').columns:
             df[col] = LabelEncoder().fit_transform(df[col])
+        #dropear columna y
         df = df.drop('y', axis=1)
         predictions = model.predict(df)
         return json.dumps({"result": predictions.tolist()})

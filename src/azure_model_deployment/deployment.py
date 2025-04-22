@@ -32,7 +32,7 @@ env.python.conda_dependencies.add_pip_package("pandas")
 env.python.conda_dependencies.add_pip_package("azureml-defaults")    
 env.python.conda_dependencies.add_pip_package("xgboost")   
 
-inference_config = InferenceConfig(entry_script="score.py", environment=env)
+inference_config = InferenceConfig(entry_script="score.py", environment=env) #score.py esta en un archivo aparte
 
 from azureml.core.webservice import AciWebservice, Webservice
 from azureml.core.model import Model
@@ -55,7 +55,7 @@ print(service.get_logs())
 print("Scoring URI:", service.scoring_uri)
 
 scoring_uri = service.scoring_uri
-
+#guardar uri en un json
 scoreuri = json.dumps({"URI": [scoring_uri]})
 file = open("uri.json", "w")
 file.write(scoreuri)
