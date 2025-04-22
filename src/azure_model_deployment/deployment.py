@@ -25,10 +25,10 @@ ws = Workspace.get(name="actividad-de-evaluacion",
 from azureml.core.environment import Environment
 from azureml.core.model import InferenceConfig
 
-env = Environment("model-env")
+env = Environment("env-sql")
 env.python.conda_dependencies.add_pip_package("scikit-learn")   
 env.python.conda_dependencies.add_pip_package("joblib")
-env.python.conda_dependencies.add_pip_package("pandas mm")
+env.python.conda_dependencies.add_pip_package("pandas")
 env.python.conda_dependencies.add_pip_package("azureml-defaults")     
 
 inference_config = InferenceConfig(entry_script="score.py", environment=env)
@@ -41,7 +41,7 @@ model = Model.register(workspace=ws,
                        model_path="model.pkl",  
                        model_name="model")
 service = Model.deploy(workspace=ws,
-                       name="actividad-evaluacion-service",
+                       name="actividad-evaluacion-sql",
                        models=[model],
                        inference_config=inference_config,
                        deployment_config=deployment_config,
