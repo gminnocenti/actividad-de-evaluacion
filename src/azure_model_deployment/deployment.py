@@ -11,17 +11,17 @@ key = os.getenv("KEY")
 
 
 from azureml.core import Workspace
-"""
-ws = Workspace.create(name="actividad-de-evaluacion",
+
+ws = Workspace.create(name="actividad3",
                       subscription_id = key, # remplazar por tu subsucripcion id
-                      resource_group = "resource-group-actividad-evaluacion",
+                      resource_group = "actividad3",
                       location="centralindia")
 
 """
 ws = Workspace.get(name="actividad-de-evaluacion",
                       subscription_id = key, # remplazar por tu subsucripcion id
                       resource_group = "resource-group-actividad-evaluacion")
-
+"""
 from azureml.core.environment import Environment
 from azureml.core.model import InferenceConfig
 
