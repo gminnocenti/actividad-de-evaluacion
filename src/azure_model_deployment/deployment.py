@@ -29,7 +29,8 @@ env = Environment("env-sql")
 env.python.conda_dependencies.add_pip_package("scikit-learn")   
 env.python.conda_dependencies.add_pip_package("joblib")
 env.python.conda_dependencies.add_pip_package("pandas")
-env.python.conda_dependencies.add_pip_package("azureml-defaults")     
+env.python.conda_dependencies.add_pip_package("azureml-defaults")    
+env.python.conda_dependencies.add_pip_package("xgboost")   
 
 inference_config = InferenceConfig(entry_script="score.py", environment=env)
 
