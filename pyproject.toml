@@ -13,4 +13,5 @@ dependencies = [
     "scikit-learn>=1.6.1",
     "joblib>=1.4.2",
     "setuptools>=79.0.0",
+    "xgboost>=2.1.4",
 ]
